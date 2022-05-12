@@ -14,6 +14,6 @@ class Creep:
         pygame.draw.circle(screen, self.couleur, self.position, self.taille)
 
 
-    def RAZ (self, largeur=400, hauteur=400):
+    def RAZ (self, largeur=1920, hauteur=1080):
         self.position = Vector2(random.randint(0, largeur), random.randint(0, hauteur))
         self.couleur = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
