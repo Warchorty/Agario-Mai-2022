@@ -10,6 +10,7 @@ class Avatar:
     def __init__(self,largeur=400,hauteur=400):
         self.position = Vector2(400,400)
         self.taille = 10
+        self.tailleMAX = 100
         self.couleur = (255,0,0)
         self.masse = 10
         self.vel = Vector2(0,0)
@@ -40,8 +41,22 @@ class Avatar:
 
     def eat(self,creep):
         if creep.position.distance_to(self.position) < creep.taille+ self.taille:
-            self.taille= self.taille+ creep.taille
             creep.RAZ()
+            self.taille= self.taille+ creep.taille
+
+        elif self.taille > self.tailleMAX:
+            self.taille= self.tailleMAX
+
 
     def show(self, screen):
         pygame.draw.circle(screen,self.couleur,self.position,self.taille)
+
+    def bord(self, screen):
+        if self.position[0] > core.WINDOW_SIZE[0]:
+            self.position[0] = 0
+        elif self.position[0] < 0:
+            self.position[0] = core.WINDOW_SIZE[0]
+        elif self.position[1] > core.WINDOW_SIZE[1]:
+            self.position[1] = 0
+        elif self.position[1] < 0:
+            self.position[1] = core.WINDOW_SIZE[1]
