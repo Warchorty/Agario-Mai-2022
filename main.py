@@ -1,3 +1,4 @@
+import avatar
 from avatar import Avatar
 import core
 from creep import Creep
@@ -19,6 +20,7 @@ def setup():
 
         print("Setup END-----------")
 
+
 def run():
     core.cleanScreen()
     for c in core.memory("listcreep"):
@@ -27,12 +29,15 @@ def run():
     core.memory("a").deplacement(core.getMouseLeftClick())
 
     core.memory("a").show(core.screen)
+    core.memory("a").bord(core.screen)
+
 
     for c in core.memory("listcreep"):
         core.memory("a").eat(c)
 
     if core.getKeyPressList("q"):
         quit()
+
 
 
 
